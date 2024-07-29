@@ -1,0 +1,34 @@
+<div class="holiday-form">
+    <h2>Schedule a new holiday for <i>{{ employee.name }}</i></h2>
+    <a mat-flat-button routerLink="/holidays">View holidays</a>
+    <form [formGroup]="holidayForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <mat-label>Holiday Label</mat-label>
+            <input matInput formControlName="holidayLabel">
+            <mat-error *ngIf="holidayForm.controls.holidayLabel.invalid">Holiday Label is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Employee</mat-label>
+            <input matInput disabled [value]="employee.name  + ' (' + employee.id + ')'">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Start of Holiday</mat-label>
+            <input matInput [matDatepicker]="startPicker" formControlName="startOfHoliday">
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+            <mat-error *ngIf="holidayForm.controls.startOfHoliday.invalid">Start date is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>End of Holiday</mat-label>
+            <input matInput [matDatepicker]="endPicker" formControlName="endOfHoliday">
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+            <mat-error *ngIf="holidayForm.controls.endOfHoliday.invalid">End date is required</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" [disabled]="holidayForm.invalid">Schedule Holiday</button>
+    </form>
+</div>

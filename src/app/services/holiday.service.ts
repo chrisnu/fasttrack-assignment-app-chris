@@ -23,4 +23,17 @@ export class HolidayService {
   deleteHoliday(holidayId: string): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${holidayId}`);
   }
+
+  getHolidayById(holidayId: string): Observable<Holiday> {
+    return this.http.get<Holiday>(`${this.baseUrl}/${holidayId}`);
+  }
+
+  addHoliday(holiday: Holiday): Observable<Holiday> {
+    return this.http.post<Holiday>(this.baseUrl, holiday);
+  }
+
+  updateHoliday(holidayId: string, holiday: Holiday): Observable<Holiday> {
+    return this.http.put<Holiday>(`${this.baseUrl}/${holidayId}`, holiday);
+  }
+
 }
