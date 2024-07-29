@@ -3,7 +3,7 @@
     <form (ngSubmit)="onLogin()">
         <mat-form-field>
             <mat-label>Login as</mat-label>
-            <mat-select [(ngModel)]="username">
+            <mat-select [(ngModel)]="username" name="username">
                 <mat-option value="user">User 1</mat-option>
                 <mat-option value="user2">User 2</mat-option>
             </mat-select>
