@@ -19,4 +19,8 @@ export class HolidayService {
       }
     });
   }
+
+  deleteHoliday(holidayId: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${holidayId}`);
+  }
 }

@@ -14,6 +14,7 @@ import {
   MatRow, MatRowDef,
   MatTable
 } from "@angular/material/table";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-holiday-list',
@@ -30,7 +31,8 @@ import {
     MatCellDef,
     MatHeaderCellDef,
     MatHeaderRowDef,
-    MatRowDef
+    MatRowDef,
+    MatButton
   ],
   templateUrl: './holiday-list.component.html',
   styleUrl: './holiday-list.component.scss'
@@ -55,6 +57,12 @@ export class HolidayListComponent implements OnInit {
 
     this.holidayService.getHolidays(this.employee.id).subscribe(holidays => {
       this.holidays = holidays;
+    });
+  }
+
+  deleteHoliday(holidayId: string): void {
+    this.holidayService.deleteHoliday(holidayId).subscribe(() => {
+      this.loadHolidays();
     });
   }
 }
