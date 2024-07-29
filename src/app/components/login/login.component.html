@@ -1,0 +1,14 @@
+<div class="login-form">
+    <h2>Login</h2>
+    <form (ngSubmit)="onLogin()">
+        <mat-form-field>
+            <mat-label>Login as</mat-label>
+            <mat-select [(ngModel)]="username">
+                <mat-option value="user">User 1</mat-option>
+                <mat-option value="user2">User 2</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit">Login</button>
+    </form>
+</div>
